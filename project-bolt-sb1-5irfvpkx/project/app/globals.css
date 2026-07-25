@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  .font-display {
+    font-family: var(--font-display), 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ---------- Background orbs ---------- */
+@keyframes orb-float-slow {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(40px, -30px) scale(1.08); }
+  66%  { transform: translate(-30px, 25px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes orb-float-slower {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-50px, 40px) scale(1.12); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes orb-float-reverse {
+  0%   { transform: translate(0, 0) scale(1); }
+  40%  { transform: translate(35px, 35px) scale(0.92); }
+  80%  { transform: translate(-25px, -20px) scale(1.05); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  opacity: 0.5;
+  pointer-events: none;
+  will-change: transform;
+}
+.orb-amber   { background: radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.55), rgba(245, 158, 11, 0.0) 70%); }
+.orb-emerald { background: radial-gradient(circle at 30% 30%, rgba(52, 211, 153, 0.50), rgba(16, 185, 129, 0.0) 70%); }
+.orb-indigo  { background: radial-gradient(circle at 30% 30%, rgba(129, 140, 248, 0.50), rgba(99, 102, 241, 0.0) 70%); }
+.orb-sky     { background: radial-gradient(circle at 30% 30%, rgba(125, 211, 252, 0.45), rgba(56, 189, 248, 0.0) 70%); }
+
+.animate-orb-slow    { animation: orb-float-slow 18s ease-in-out infinite; }
+.animate-orb-slower  { animation: orb-float-slower 24s ease-in-out infinite; }
+.animate-orb-reverse { animation: orb-float-reverse 21s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orb-slow,
+  .animate-orb-slower,
+  .animate-orb-reverse { animation: none; }
+}
