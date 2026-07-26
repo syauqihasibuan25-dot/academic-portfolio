@@ -35,13 +35,6 @@ function alternateDirection(index: number): 'left' | 'right' {
 
 const baliHighlights: AwardItem[] = [
   {
-    title: 'PIMSO Final Round',
-    tier: 'Bronze',
-    year: '2025–2026',
-    description:
-      'Podium Bronze finish at the Philippine International Math and Science Olympics (PIMSO) Science Final Round.',
-  },
-  {
     title: 'Best Team in Malaysia for Science',
     tier: 'Gold',
     year: '2025',
@@ -284,6 +277,9 @@ export function Achievements() {
           line="bg-amber-400"
         />
         <div className="flex flex-col gap-5">
+          <Reveal direction={alternateDirection(1)}>
+            <PimsoShowcase />
+          </Reveal>
           <Reveal direction={alternateDirection(1)}>
             <BaliShowcase />
           </Reveal>
