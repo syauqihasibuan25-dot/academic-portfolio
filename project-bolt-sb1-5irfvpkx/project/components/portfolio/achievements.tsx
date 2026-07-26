@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Reveal } from './reveal'
 import { TiltCard } from './tilt-card'
 import { Globe, Medal, Award, Trophy, Star } from 'lucide-react'
-import { PimsoShowcase } from './PimsoShowcase' // or check the exact filename in your folder
+import { PimsoShowcase } from './PimsoShowcase'
 
 type AwardTier = 'Gold' | 'Silver' | 'Bronze' | 'Merit' | 'Participant' | 'Honorable Mention' | 'Recognition'
 
