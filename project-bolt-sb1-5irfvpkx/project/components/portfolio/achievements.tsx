@@ -285,9 +285,6 @@ export function Achievements() {
         />
         <div className="flex flex-col gap-5">
           <Reveal direction={alternateDirection(1)}>
-            <PimsoShowcase />
-          </Reveal>
-          <Reveal direction={alternateDirection(1)}>
             <BaliShowcase />
           </Reveal>
           <div className="grid gap-5 lg:grid-cols-2">
