@@ -1,4 +1,4 @@
-import { BackgroundOrbs } from '@/components/portfolio/orbs'
+import { BackgroundOrbs } from '../components/portfolio/orbs'
 import { Hero } from '@/components/portfolio/hero'
 import { Achievements } from '@/components/portfolio/achievements'
 
