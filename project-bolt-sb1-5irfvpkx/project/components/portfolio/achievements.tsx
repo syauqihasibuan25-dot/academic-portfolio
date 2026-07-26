@@ -61,6 +61,7 @@ const pimsoHighlights: AwardItem[] = [
     year: '2025-2026',
     description: 'Podium Bronze finish at the Philippine International Math and Science Olympics (PIMSO) Science Final Round.',
   },
+]
 
 const international: AwardItem[] = [
   {
