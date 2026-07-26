@@ -54,6 +54,14 @@ const baliHighlights: AwardItem[] = [
   },
 ]
 
+const pimsoHighlights: AwardItem[] = [
+  {
+    title: 'PIMSO Final Round',
+    tier: 'Bronze',
+    year: '2025-2026',
+    description: 'Podium Bronze finish at the Philippine International Math and Science Olympics (PIMSO) Science Final Round.',
+  },
+
 const international: AwardItem[] = [
   {
     title: 'ASMO International Round — Bangkok, Thailand',
