@@ -1,3 +1,3 @@
-export default function Orbs() {
+export function BackgroundOrbs() {
   return null;
 }
