@@ -61,7 +61,7 @@ const international: AwardItem[] = [
     year: '2025-2026',
     description: 'Podium Bronze finish at the Philippine International Math and Science Olympics (PIMSO) Science Final Round.',
     image: '/pimso-philiphines-2025.jjpg',
-    imageAlt: 'Bronze Individual Award for Muhammad Syauqi Hasibuan at PIMSO",
+    imageAlt: 'Bronze Individual Award for Muhammad Syauqi Hasibuan at PIMSO',
   },
   {
     title: 'ASMO International Round — Bangkok, Thailand',
