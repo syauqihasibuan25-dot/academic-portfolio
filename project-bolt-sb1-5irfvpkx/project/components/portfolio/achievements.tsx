@@ -54,17 +54,15 @@ const baliHighlights: AwardItem[] = [
     description: 'Represented Malaysia in the Asian Science and Mathematics Olympiad final round.',
   },
 ]
-
-const pimsoHighlights: AwardItem[] = [
-  {
+const international: AwardItem[] = [
+   {
     title: 'PIMSO Final Round',
     tier: 'Bronze',
     year: '2025-2026',
     description: 'Podium Bronze finish at the Philippine International Math and Science Olympics (PIMSO) Science Final Round.',
+    image: '/pimso-philiphines-2025.jjpg',
+    imageAlt: 'Bronze Individual Award for Muhammad Syauqi Hasibuan at PIMSO",
   },
-]
-
-const international: AwardItem[] = [
   {
     title: 'ASMO International Round — Bangkok, Thailand',
     tier: 'Bronze',
