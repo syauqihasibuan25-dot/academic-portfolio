@@ -70,4 +70,3 @@ export default function SustainableEnergySection() {
       </div>
     </section>
   );
-}
