@@ -1,11 +1,14 @@
+'client';
+
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function SustainableEnergySection() {
   return (
     <section className="relative w-full py-24 px-6 bg-gradient-to-b from-[#0f172a] via-[#1e1b4b] to-[#0f172a] text-white overflow-hidden border-t border-indigo-500/20">
       
-      {/* Background Glows for a vibrant, non-depressing feel */}
+      {/* Background Glows */}
       <div className="absolute top-1/4 left-10 w-72 h-72 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -38,24 +41,27 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: Hanging ID Card Concept */}
-        <div className="flex justify-center items-center pt-10">
-          <div className="relative">
-            
-            {/* Lanyard Strap hanging down from the top */}
-            <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-8 h-20 bg-gradient-to-b from-slate-700 via-indigo-900 to-slate-800 shadow-xl z-20 rounded-t-sm flex flex-col items-center">
-              {/* Lanyard metallic clip */}
-              <div className="w-10 h-6 bg-gradient-to-r from-slate-300 via-white to-slate-400 rounded-md mt-14 shadow-md border border-slate-500 flex items-center justify-center">
-                <div className="w-4 h-1.5 bg-slate-800 rounded-full"></div>
-              </div>
-            </div>
+        {/* Right Column: Interactive Physics Draggable ID Card */}
+        <div className="flex justify-center items-center pt-10 min-h-[420px]">
+          
+          {/* Lanyard Top Anchor Point */}
+          <div className="absolute flex flex-col items-center z-10">
+            <div className="w-12 h-4 bg-slate-700 rounded-md border border-slate-600 shadow-lg"></div>
+            {/* Lanyard Strap Line */}
+            <div className="w-2 h-16 bg-gradient-to-b from-slate-700 via-indigo-900 to-slate-800"></div>
+          </div>
 
-            {/* The ID Card Container with hanging movement */}
-            <div className="relative w-72 bg-gradient-to-b from-slate-900/90 to-slate-950/95 border border-indigo-500/30 rounded-3xl p-5 shadow-2xl shadow-indigo-950/80 backdrop-blur-xl transform hover:scale-105 transition-all duration-500 group">
+          {/* Draggable Spring-Physics Card */}
+          <motion.div
+            drag
+            dragConstraints={{ left: -80, right: 80, top: -20, bottom: 80 }}
+            dragElastic={0.4}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ cursor: "grabbing" }}
+            className="relative cursor-grab mt-20 z-20"
+          >
+            <div className="w-72 bg-gradient-to-b from-slate-900/95 to-slate-950/95 border border-indigo-500/30 rounded-3xl p-5 shadow-2xl shadow-indigo-950/90 backdrop-blur-xl">
               
-              {/* Subtle neon rim light effect */}
-              <div className="absolute inset-0 rounded-3xl border border-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
               {/* Card Header */}
               <div className="flex justify-between items-center pb-3 border-b border-slate-800 mb-4 text-xs tracking-widest text-slate-400 font-mono">
                 <span className="text-indigo-400 font-bold">MSH-GLOBAL ID</span>
@@ -70,7 +76,7 @@ export default function SustainableEnergySection() {
                   src="/syauqihasibuan.jpeg" 
                   alt="Syauqi Hasibuan"
                   fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover object-top pointer-events-none"
                 />
               </div>
 
@@ -80,10 +86,12 @@ export default function SustainableEnergySection() {
                 <p className="text-xs font-medium bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
                   Delegate & Tech Innovator
                 </p>
+                <p className="text-[10px] text-slate-500 pt-1 italic">(Click & drag me around!)</p>
               </div>
 
             </div>
-          </div>
+          </motion.div>
+
         </div>
 
       </div>
