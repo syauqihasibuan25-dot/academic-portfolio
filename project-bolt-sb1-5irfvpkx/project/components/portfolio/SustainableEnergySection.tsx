@@ -1,4 +1,4 @@
-'client';
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
@@ -42,12 +42,11 @@ export default function SustainableEnergySection() {
         </div>
 
         {/* Right Column: Interactive Physics Draggable ID Card */}
-        <div className="flex justify-center items-center pt-10 min-h-[420px]">
+        <div className="flex justify-center items-center pt-10 min-h-[420px] relative">
           
           {/* Lanyard Top Anchor Point */}
-          <div className="absolute flex flex-col items-center z-10">
+          <div className="absolute top-0 flex flex-col items-center z-10">
             <div className="w-12 h-4 bg-slate-700 rounded-md border border-slate-600 shadow-lg"></div>
-            {/* Lanyard Strap Line */}
             <div className="w-2 h-16 bg-gradient-to-b from-slate-700 via-indigo-900 to-slate-800"></div>
           </div>
 
