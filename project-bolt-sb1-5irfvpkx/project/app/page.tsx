@@ -28,7 +28,7 @@ export default function Page() {
 
       <Hero />
       <Achievements />
-
+      <SustainableEnergySection />
       <footer className="relative border-t border-slate-200 py-10">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <p className="font-display text-lg font-bold text-slate-900">Muhammad Syauqi Hasibuan</p>
