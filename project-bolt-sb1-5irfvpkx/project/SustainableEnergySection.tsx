@@ -53,7 +53,7 @@ export default function SustainableEnergySection() {
               <img
                 src="/syauqihasibuan.jpeg" 
                 alt="Syauqi Hasibuan"
-                fill
+              
                 className="w-full h-80 object-cover object-top rounded-xl"
               />
             </div>
