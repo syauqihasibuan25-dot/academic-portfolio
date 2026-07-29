@@ -50,7 +50,7 @@ export default function SustainableEnergySection() {
 
             {/* Photo Container */}
             <div className="relative w-full h-80 rounded-xl overflow-hidden bg-[#181818] border border-[#222]">
-              <Image 
+              <img
                 src="/syauqihasibuan.jpeg" 
                 alt="Syauqi Hasibuan"
                 fill
