@@ -1,7 +1,7 @@
 import { BackgroundOrbs } from '@/components/portfolio/orbs'
 import { Hero } from '@/components/portfolio/hero'
 import { Achievements } from '@/components/portfolio/achievements'
-
+import SustainableEnergySection from '@/components/portfolio/SustainableEnergySection';
 export default function Page() {
   return (
     <main className="relative min-h-screen bg-slate-50 text-slate-900">
