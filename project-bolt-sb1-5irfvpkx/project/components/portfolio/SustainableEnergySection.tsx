@@ -15,14 +15,6 @@ export default function SustainableEnergySection() {
       <div className="absolute top-10 left-1/4 w-96 h-96 bg-rose-600/15 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-red-600/15 rounded-full blur-[120px] pointer-events-none"></div>
 
-      {/* LANYARD ANCHORED ABSOLUTELY TO THE VERY TOP EDGE (URL BAR CONCEPT) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center z-30 pointer-events-none">
-        {/* Metal top clamp mimicking the browser window edge */}
-        <div className="w-24 h-4 bg-gradient-to-r from-neutral-300 via-rose-200 to-neutral-300 rounded-b-md shadow-2xl border-b border-rose-400"></div>
-        {/* The lanyard strap string hanging down seamlessly */}
-        <div className="w-4 h-36 bg-gradient-to-b from-rose-950 via-rose-900 to-neutral-950 shadow-2xl border-x border-rose-500/30"></div>
-      </div>
-
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 pt-16">
         
         {/* Left Column: Shiny Solid Cherry Red Title */}
@@ -73,20 +65,26 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: Perfectly Connected Strap & Draggable ID Card */}
-        <div className="flex justify-center items-center pt-24 relative min-h-[520px]">
+        {/* Right Column: Fully Connected Draggable ID Card with Integrated Lanyard */}
+        <div className="flex justify-center items-center pt-12 relative min-h-[520px]">
 
           <motion.div
             drag
-            dragConstraints={{ left: -100, right: 100, top: -10, bottom: 100 }}
+            dragConstraints={{ left: -100, right: 100, top: -50, bottom: 100 }}
             dragElastic={0.5}
             whileTap={{ cursor: "grabbing" }}
             animate={{ x: 0, y: 0, rotate: 0 }}
             transition={{ type: "spring", stiffness: 250, damping: 18 }}
             className="relative cursor-grab z-20 origin-top flex flex-col items-center"
           >
-            {/* Seamless physical connector clip linking the strap directly to the badge */}
-            <div className="w-12 h-8 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-lg shadow-md border border-neutral-300 z-30 -mb-1 flex items-center justify-center">
+            {/* Lanyard Strap extending upwards from the card so it's guaranteed to connect */}
+            <div className="flex flex-col items-center -space-y-1">
+              <div className="w-16 h-3 bg-gradient-to-r from-neutral-400 via-white to-neutral-400 rounded-t-md shadow-md border border-neutral-300"></div>
+              <div className="w-4 h-24 bg-gradient-to-b from-rose-950 via-rose-900 to-neutral-950 shadow-2xl border-x border-rose-500/30"></div>
+            </div>
+
+            {/* Metal connector clip */}
+            <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-md shadow-md border border-neutral-300 z-30 -mb-2 flex items-center justify-center">
               <div className="w-4 h-1.5 bg-neutral-900 rounded-full"></div>
             </div>
 
