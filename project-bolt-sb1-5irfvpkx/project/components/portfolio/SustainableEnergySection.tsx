@@ -41,23 +41,25 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: Interactive Physics Draggable ID Card */}
-        <div className="flex justify-center items-center pt-10 min-h-[420px] relative">
+        {/* Right Column: Properly Anchored Hanging ID Card */}
+        <div className="flex flex-col items-center justify-center pt-4 relative min-h-[500px]">
           
-          {/* Lanyard Top Anchor Point */}
-          <div className="absolute top-0 flex flex-col items-center z-10">
-            <div className="w-12 h-4 bg-slate-700 rounded-md border border-slate-600 shadow-lg"></div>
-            <div className="w-2 h-16 bg-gradient-to-b from-slate-700 via-indigo-900 to-slate-800"></div>
+          {/* Lanyard attached securely to the very top of this column layout */}
+          <div className="flex flex-col items-center z-10">
+            <div className="w-16 h-5 bg-gradient-to-r from-slate-600 via-slate-300 to-slate-600 rounded-md border border-slate-500 shadow-xl"></div>
+            <div className="w-3 h-32 bg-gradient-to-b from-slate-700 via-indigo-950 to-slate-900 shadow-inner"></div>
           </div>
 
-          {/* Draggable Spring-Physics Card */}
+          {/* Draggable Card positioned right at the end of the strap */}
           <motion.div
             drag
-            dragConstraints={{ left: -80, right: 80, top: -20, bottom: 80 }}
-            dragElastic={0.4}
-            whileHover={{ scale: 1.02 }}
+            dragConstraints={{ left: -100, right: 100, top: -10, bottom: 100 }}
+            dragElastic={0.5}
             whileTap={{ cursor: "grabbing" }}
-            className="relative cursor-grab mt-20 z-20"
+            initial={{ rotate: 0 }}
+            animate={{ rotate: [0, 1.5, -1.5, 0] }}
+            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+            className="relative cursor-grab -mt-2 z-20 origin-top"
           >
             <div className="w-72 bg-gradient-to-b from-slate-900/95 to-slate-950/95 border border-indigo-500/30 rounded-3xl p-5 shadow-2xl shadow-indigo-950/90 backdrop-blur-xl">
               
@@ -85,7 +87,7 @@ export default function SustainableEnergySection() {
                 <p className="text-xs font-medium bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
                   Delegate & Tech Innovator
                 </p>
-                <p className="text-[10px] text-slate-500 pt-1 italic">(Click & drag me around!)</p>
+                <p className="text-[10px] text-emerald-400/80 pt-1 font-mono tracking-tight animate-bounce">✨ Grab & swing me around! ✨</p>
               </div>
 
             </div>
