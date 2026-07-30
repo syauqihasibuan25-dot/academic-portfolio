@@ -12,17 +12,17 @@ export default function SustainableEnergySection() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Smooth out the spring physics so it snaps back naturally to one center spot
-  const smoothX = useSpring(x, { stiffness: 350, damping: 25 });
-  const smoothY = useSpring(y, { stiffness: 350, damping: 25 });
+  // Smooth spring physics so it always snaps cleanly back to the center
+  const smoothX = useSpring(x, { stiffness: 400, damping: 25 });
+  const smoothY = useSpring(y, { stiffness: 400, damping: 25 });
 
-  // Dynamically stretch string length based on 2D distance from the center
+  // Dynamically calculate the string length based on how far you drag it
   const stringLength = useTransform([smoothX, smoothY], ([latestX, latestY]: number[]) => {
     const distance = Math.sqrt(latestX * latestX + latestY * latestY);
-    return Math.max(90, 110 + distance * 0.5);
+    return Math.max(60, 90 + distance * 0.5);
   });
 
-  // Dynamically tilt/rotate string angle in whichever direction you drag
+  // Dynamically calculate the tilt/rotation angle of the string toward your cursor
   const stringAngle = useTransform([smoothX, smoothY], ([latestX, latestY]: number[]) => {
     return (Math.atan2(latestX, -latestY) * 180) / Math.PI;
   });
@@ -82,13 +82,13 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: Single Position Anchor & Draggable Card */}
+        {/* Right Column: Lanyard & Draggable Card Container */}
         <div className="flex justify-center items-center relative min-h-[500px]">
 
-          {/* Master container holding the exact single anchor point */}
-          <div className="relative flex flex-col items-center">
+          {/* Anchor point container */}
+          <div className="relative flex flex-col items-center justify-center">
 
-            {/* FIXED TOP ANCHOR STRING: Stays pinned at the top center, stretches & rotates dynamically */}
+            {/* STRETCHING STRING: Fixed at the top, rotating and stretching dynamically based on drag */}
             <motion.div 
               style={{ 
                 height: stringLength,
@@ -98,14 +98,14 @@ export default function SustainableEnergySection() {
               className="absolute top-0 w-4 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none"
             />
 
-            {/* DRAGGABLE CARD: Moves freely in all directions, anchored to the string, and snaps back to the exact center */}
+            {/* DRAGGABLE CARD ASSEMBLY */}
             <motion.div
               style={{ x, y }}
               drag
-              dragConstraints={{ left: -140, right: 140, top: -60, bottom: 180 }}
-              dragElastic={0.35}
+              dragConstraints={{ left: -140, right: 140, top: -50, bottom: 180 }}
+              dragElastic={0.3}
               whileTap={{ cursor: "grabbing" }}
-              className="relative cursor-grab z-30 flex flex-col items-center mt-[110px]"
+              className="relative cursor-grab z-30 flex flex-col items-center mt-[90px]"
             >
               {/* Metal connector clip */}
               <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-lg border border-neutral-300 flex items-center justify-center z-40 -mb-1 relative">
