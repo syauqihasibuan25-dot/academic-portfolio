@@ -8,12 +8,12 @@ export default function SustainableEnergySection() {
   const titleText = "Chasing a Sustainable Energy Future";
   const words = titleText.split(" ");
 
-  // Motion values to track the drag
+  // Motion values for local tracking
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center px-6 overflow-hidden pt-12 pb-16">
+    <section className="relative w-full min-h-[90vh] flex items-center justify-center px-6 overflow-hidden py-20">
       
       {/* Soft Burgundy & Wine Ambient Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#6B2D34]/25 rounded-full blur-[170px] pointer-events-none"></div>
@@ -67,27 +67,28 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: The Entire Lanyard + Card as ONE Single Draggable Object */}
-        <div className="flex justify-center items-center relative min-h-[500px]">
+        {/* Right Column: Isolated Draggable Stage */}
+        <div className="flex justify-center items-center relative h-[520px]">
 
+          {/* Unified Badge Container that drags smoothly as one block */}
           <motion.div
             style={{ x, y }}
             drag
-            dragConstraints={{ left: -140, right: 140, top: -40, bottom: 180 }}
-            dragElastic={0.3}
-            dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
+            dragConstraints={{ left: -120, right: 120, top: -30, bottom: 120 }}
+            dragElastic={0.2}
+            dragTransition={{ bounceStiffness: 600, bounceDamping: 25 }}
             whileTap={{ cursor: "grabbing" }}
-            className="relative cursor-grab z-30 flex flex-col items-center pt-4"
+            className="absolute cursor-grab z-30 flex flex-col items-center"
           >
-            {/* 1. The Lanyard String (At the very top of the single block) */}
-            <div className="w-4 h-24 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_20px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 rounded-t-sm" />
+            {/* Lanyard Top Strap */}
+            <div className="w-4 h-20 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_20px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 rounded-t-sm" />
 
-            {/* 2. Metal connector clip */}
+            {/* Metal connector clip */}
             <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-lg border border-neutral-300 flex items-center justify-center z-40 -mb-1 relative">
               <div className="w-4 h-1.5 bg-black rounded-full"></div>
             </div>
 
-            {/* 3. Burgundy Leather-Look ID Card */}
+            {/* Burgundy Leather-Look ID Card */}
             <div className="w-72 bg-gradient-to-b from-[#120406] via-[#21080b] to-[#120406] border-2 border-[#803941] rounded-3xl p-5 shadow-[0_0_50px_rgba(107,45,52,0.4)] backdrop-blur-2xl relative z-30">
               
               {/* Card Header */}
@@ -114,7 +115,7 @@ export default function SustainableEnergySection() {
                 <p className="text-xs font-semibold text-[#a24853]">
                   Delegate & Tech Innovator
                 </p>
-                <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Drag anywhere & watch it snap back! ✨</p>
+                <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight">✨ Drag & snap back! ✨</p>
               </div>
 
             </div>
