@@ -1,43 +1,43 @@
 import { BackgroundOrbs } from '@/components/portfolio/orbs'
 import { Hero } from '@/components/portfolio/hero'
 import { Achievements } from '@/components/portfolio/achievements'
-import  SustainableEnergySection  from '@/components/portfolio/SustainableEnergySection';
+import SustainableEnergySection from '@/components/portfolio/SustainableEnergySection';
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen bg-slate-50 text-slate-900">
+    <main className="relative min-h-screen bg-[#0f0305] text-white selection:bg-[#803941] selection:text-white">
       <BackgroundOrbs />
-      <SustainableEnergySection/>
-
-      <nav className="sticky top-0 z-40 border-b border-slate-200/70 bg-slate-50/80 backdrop-blur">
+      
+      <nav className="sticky top-0 z-50 border-b border-[#803941]/30 bg-[#0f0305]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#home" className="font-display text-lg font-extrabold tracking-tight text-slate-900">
-            MSH<span className="text-amber-500">.</span>
+          <a href="#home" className="font-display text-lg font-extrabold tracking-tight text-white">
+            MSH<span className="text-[#a24853]">.</span>
           </a>
-          <div className="hidden items-center gap-6 text-sm font-semibold text-slate-600 sm:flex">
-            <a href="#international" className="transition-colors hover:text-amber-600">
+          <div className="hidden items-center gap-6 text-sm font-semibold text-neutral-300 sm:flex">
+            <a href="#international" className="transition-colors hover:text-[#a24853]">
               International
             </a>
-            <a href="#national" className="transition-colors hover:text-emerald-600">
+            <a href="#national" className="transition-colors hover:text-[#a24853]">
               National
             </a>
-            <a href="#leadership" className="transition-colors hover:text-indigo-600">
+            <a href="#leadership" className="transition-colors hover:text-[#a24853]">
               Leadership
             </a>
           </div>
         </div>
       </nav>
 
+      <SustainableEnergySection />
       <Hero />
       <Achievements />
 
-      <footer className="relative border-t border-slate-200 py-10">
+      <footer className="relative border-t border-[#803941]/30 py-10 bg-[#0f0305]">
         <div className="mx-auto max-w-6xl px-6 text-center">
-          <p className="font-display text-lg font-bold text-slate-900">Muhammad Syauqi Hasibuan</p>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="font-display text-lg font-bold text-white">Muhammad Syauqi Hasibuan</p>
+          <p className="mt-1 text-sm text-neutral-400">
             Academic &amp; Energy Leadership Portfolio — Aspiring Chemical &amp; Petroleum Engineer
           </p>
-          <p className="mt-4 text-xs text-slate-400">Alhamdulillah. All success is by the grace and will of Allah.</p>
+          <p className="mt-4 text-xs text-neutral-500">Alhamdulillah. All success is by the grace and will of Allah.</p>
         </div>
       </footer>
     </main>
