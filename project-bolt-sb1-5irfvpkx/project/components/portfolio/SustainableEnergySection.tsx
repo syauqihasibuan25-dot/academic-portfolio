@@ -2,30 +2,15 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 
 export default function SustainableEnergySection() {
   const titleText = "Chasing a Sustainable Energy Future";
   const words = titleText.split(" ");
 
-  // Motion values for free-roaming drag
+  // Motion values for free movement
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
-  // Smooth spring physics so it always snaps cleanly back to the center
-  const smoothX = useSpring(x, { stiffness: 400, damping: 25 });
-  const smoothY = useSpring(y, { stiffness: 400, damping: 25 });
-
-  // Dynamically calculate the string length based on how far you drag it
-  const stringLength = useTransform([smoothX, smoothY], ([latestX, latestY]: number[]) => {
-    const distance = Math.sqrt(latestX * latestX + latestY * latestY);
-    return Math.max(60, 90 + distance * 0.5);
-  });
-
-  // Dynamically calculate the tilt/rotation angle of the string toward your cursor
-  const stringAngle = useTransform([smoothX, smoothY], ([latestX, latestY]: number[]) => {
-    return (Math.atan2(latestX, -latestY) * 180) / Math.PI;
-  });
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center px-6 overflow-hidden pt-12 pb-16">
@@ -82,30 +67,24 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: Lanyard & Draggable Card Container */}
+        {/* Right Column: Clean Lanyard & Card Assembly */}
         <div className="flex justify-center items-center relative min-h-[500px]">
 
-          {/* Anchor point container */}
-          <div className="relative flex flex-col items-center justify-center">
+          {/* Master Container with a single fixed anchor point */}
+          <div className="relative flex flex-col items-center">
 
-            {/* STRETCHING STRING: Fixed at the top, rotating and stretching dynamically based on drag */}
-            <motion.div 
-              style={{ 
-                height: stringLength,
-                rotate: stringAngle,
-                transformOrigin: "top center"
-              }}
-              className="absolute top-0 w-4 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none"
-            />
+            {/* FIXED LANYARD TOP STRAP */}
+            <div className="w-4 h-24 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_20px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 rounded-t-sm z-10" />
 
-            {/* DRAGGABLE CARD ASSEMBLY */}
+            {/* DRAGGABLE CARD: Perfectly anchored, moves everywhere, and snaps back to this exact center spot */}
             <motion.div
               style={{ x, y }}
               drag
-              dragConstraints={{ left: -140, right: 140, top: -50, bottom: 180 }}
-              dragElastic={0.3}
+              dragConstraints={{ left: -140, right: 140, top: -40, bottom: 180 }}
+              dragElastic={0.25}
+              dragTransition={{ bounceStiffness: 500, bounceDamping: 20 }}
               whileTap={{ cursor: "grabbing" }}
-              className="relative cursor-grab z-30 flex flex-col items-center mt-[90px]"
+              className="relative cursor-grab z-30 flex flex-col items-center"
             >
               {/* Metal connector clip */}
               <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-lg border border-neutral-300 flex items-center justify-center z-40 -mb-1 relative">
@@ -139,7 +118,7 @@ export default function SustainableEnergySection() {
                   <p className="text-xs font-semibold text-[#a24853]">
                     Delegate & Tech Innovator
                   </p>
-                  <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Drag anywhere & watch it stretch! ✨</p>
+                  <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Drag anywhere & watch it snap back! ✨</p>
                 </div>
 
               </div>
