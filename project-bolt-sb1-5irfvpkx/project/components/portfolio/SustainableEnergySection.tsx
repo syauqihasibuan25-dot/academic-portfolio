@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 
@@ -8,14 +8,15 @@ export default function SustainableEnergySection() {
   const titleText = "Chasing a Sustainable Energy Future";
   const words = titleText.split(" ");
 
-  // Motion values to track dragging distance
+  // Motion values to track dragging across X and Y axes
+  const x = useMotionValue(0);
   const y = useMotionValue(0);
   
-  // Stretch the lanyard string height as the card is pulled down (base height 160px)
-  const stringHeight = useTransform(y, [0, 200], [160, 360]);
+  // Stretch the lanyard string vertically using scaleY based on downward drag
+  const stringScaleY = useTransform(y, [0, 250], [1, 2.5]);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center px-6 bg-[#0f0305] text-white overflow-hidden pt-20 pb-16">
+    <section className="relative w-full min-h-screen flex items-center justify-center px-6 overflow-hidden pt-20 pb-16">
       
       {/* Soft Burgundy & Wine Ambient Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#6B2D34]/25 rounded-full blur-[170px] pointer-events-none"></div>
@@ -73,19 +74,19 @@ export default function SustainableEnergySection() {
         <div className="flex justify-center items-center relative min-h-[520px]">
 
           <motion.div
-            style={{ y }}
+            style={{ x, y }}
             drag
-            dragConstraints={{ left: 0, right: 0, top: 0, bottom: 220 }}
+            dragConstraints={{ left: -120, right: 120, top: -100, bottom: 220 }}
             dragElastic={0.4}
-            dragTransition={{ bounceStiffness: 400, bounceDamping: 15 }}
+            dragTransition={{ bounceStiffness: 300, bounceDamping: 12 }}
             whileTap={{ cursor: "grabbing" }}
             className="relative cursor-grab z-30 flex flex-col items-center"
           >
             
-            {/* ELASTIC LANYARD STRING: Dynamically stretches as you pull down */}
+            {/* ELASTIC LANYARD STRING: Stretches dynamically downwards from the anchor point */}
             <motion.div 
-              style={{ height: stringHeight }}
-              className="absolute -top-[160px] w-4 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none origin-top"
+              style={{ scaleY: stringScaleY }}
+              className="absolute -top-[160px] w-4 h-40 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none origin-top"
             />
 
             {/* Metal connector clip */}
@@ -120,7 +121,7 @@ export default function SustainableEnergySection() {
                 <p className="text-xs font-semibold text-[#a24853]">
                   Delegate & Tech Innovator
                 </p>
-                <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Pull down & watch it stretch! ✨</p>
+                <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Pull & watch it stretch like rubber! ✨</p>
               </div>
 
             </div>
