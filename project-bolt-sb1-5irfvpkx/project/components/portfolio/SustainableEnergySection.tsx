@@ -9,17 +9,21 @@ export default function SustainableEnergySection() {
   const words = titleText.split(" ");
 
   return (
-    <section className="relative w-full py-20 px-6 bg-gradient-to-b from-[#120306] via-[#1a0508] to-[#120306] text-white overflow-hidden border-t border-rose-500/35">
+    <section className="relative w-full pt-12 pb-24 px-6 bg-gradient-to-b from-[#120306] via-[#1a0508] to-[#120306] text-white overflow-hidden border-t border-rose-500/35">
       
       {/* Deep Cherry Red Glows */}
-      <div className="absolute top-5 left-1/4 w-96 h-96 bg-rose-600/15 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-5 right-1/4 w-96 h-96 bg-red-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-600/15 rounded-full blur-[120px] pointer-events-none"></div>
 
-      {/* Main Container aligned to the top (items-start) so the card starts high up */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start relative z-10 pt-8">
+      {/* LANYARD ANCHORED ALL THE WAY TO THE ABSOLUTE TOP OF THE PAGE/VIEWPORT */}
+      <div className="absolute top-0 left-[75%] md:left-[75%] -translate-x-1/2 flex flex-col items-center pointer-events-none z-10">
+        <div className="w-4 h-[600px] bg-gradient-to-b from-rose-950 via-rose-900 to-neutral-950 shadow-2xl border-x border-rose-500/30"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-20">
         
         {/* Left Column: Shiny Solid Cherry Red Title & Content */}
-        <div className="space-y-6 pt-4">
+        <div className="space-y-6">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -66,34 +70,29 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: High-Positioned Draggable ID Card with Infinite Lanyard */}
-        <div className="flex justify-center items-start pt-6 relative min-h-[480px]">
+        {/* Right Column: Draggable ID Card that snaps back */}
+        <div className="flex justify-center items-center relative min-h-[450px] pt-10">
 
           <motion.div
             drag
-            dragConstraints={{ left: -100, right: 100, top: -50, bottom: 100 }}
-            dragElastic={0.5}
+            dragConstraints={{ left: -120, right: 120, top: -100, bottom: 100 }}
+            dragElastic={0.6}
             whileTap={{ cursor: "grabbing" }}
             animate={{ x: 0, y: 0, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 250, damping: 18 }}
-            className="relative cursor-grab z-20 origin-top flex flex-col items-center mt-4"
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="relative cursor-grab z-30 origin-top flex flex-col items-center"
           >
             
-            {/* THE LANYARD STRAP - Reaching far up past the top of the container */}
-            <div className="absolute bottom-[100%] left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none z-10">
-              <div className="w-4 h-[1000px] bg-gradient-to-b from-rose-950 via-rose-900 to-neutral-950 shadow-2xl border-x border-rose-500/30"></div>
-              
-              {/* Metal clip connecting the string to the card */}
-              <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-md border border-neutral-300 flex items-center justify-center translate-y-1">
-                <div className="w-4 h-1.5 bg-neutral-900 rounded-full"></div>
-              </div>
+            {/* Metal connector clip right on top of the card */}
+            <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-md border border-neutral-300 flex items-center justify-center z-40 -mb-1">
+              <div className="w-4 h-1.5 bg-neutral-900 rounded-full"></div>
             </div>
 
-            {/* The Cherry Red ID Card with glowing hover zoom effect */}
+            {/* The Cherry Red ID Card with hover zoom effect */}
             <motion.div 
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
-              className="w-72 bg-gradient-to-b from-neutral-950 via-[#1a0508] to-neutral-950 border-2 border-rose-500/50 rounded-3xl p-5 shadow-[0_0_50px_rgba(225,29,72,0.3)] backdrop-blur-2xl relative z-25 mt-1"
+              className="w-72 bg-gradient-to-b from-neutral-950 via-[#1a0508] to-neutral-950 border-2 border-rose-500/50 rounded-3xl p-5 shadow-[0_0_50px_rgba(225,29,72,0.3)] backdrop-blur-2xl relative z-30"
             >
               
               {/* Card Header */}
