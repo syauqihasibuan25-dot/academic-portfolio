@@ -16,16 +16,22 @@ export default function SustainableEnergySection() {
   const smoothX = useSpring(x, { stiffness: 300, damping: 20 });
   const smoothY = useSpring(y, { stiffness: 300, damping: 20 });
 
-  // Calculate string length dynamically based on the card's 2D distance from center
-  const stringLength = useTransform([smoothX, smoothY], ([latestX, latestY]) => {
-    const distance = Math.sqrt(latestX * latestX + latestY * latestY);
-    return Math.max(120, 140 + distance * 0.6);
-  });
+  // Calculate string length dynamically with explicit types to satisfy TypeScript
+  const stringLength = useTransform(
+    [smoothX, smoothY], 
+    ([latestX, latestY]: number[]) => {
+      const distance = Math.sqrt(latestX * latestX + latestY * latestY);
+      return Math.max(120, 140 + distance * 0.6);
+    }
+  );
 
-  // Calculate string rotation angle so it tilts toward the card when dragged sideways
-  const stringAngle = useTransform([smoothX, smoothY], ([latestX, latestY]) => {
-    return (Math.atan2(latestX, -latestY) * 180) / Math.PI;
-  });
+  // Calculate string rotation angle with explicit types
+  const stringAngle = useTransform(
+    [smoothX, smoothY], 
+    ([latestX, latestY]: number[]) => {
+      return (Math.atan2(latestX, -latestY) * 180) / Math.PI;
+    }
+  );
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center px-6 overflow-hidden pt-10 pb-16">
