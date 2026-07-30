@@ -2,20 +2,33 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
 export default function SustainableEnergySection() {
   const titleText = "Chasing a Sustainable Energy Future";
   const words = titleText.split(" ");
 
-  // Motion value for vertical dragging
+  // Motion values for free-roaming drag (X and Y)
+  const x = useMotionValue(0);
   const y = useMotionValue(0);
-  
-  // Stretch the lanyard string height dynamically as it's pulled down
-  const stringHeight = useTransform(y, [0, 200], [140, 340]);
+
+  // Smooth out the motion for spring physics
+  const smoothX = useSpring(x, { stiffness: 300, damping: 20 });
+  const smoothY = useSpring(y, { stiffness: 300, damping: 20 });
+
+  // Calculate string length dynamically based on the card's 2D distance from center
+  const stringLength = useTransform([smoothX, smoothY], ([latestX, latestY]) => {
+    const distance = Math.sqrt(latestX * latestX + latestY * latestY);
+    return Math.max(120, 140 + distance * 0.6);
+  });
+
+  // Calculate string rotation angle so it tilts toward the card when dragged sideways
+  const stringAngle = useTransform([smoothX, smoothY], ([latestX, latestY]) => {
+    return (Math.atan2(latestX, -latestY) * 180) / Math.PI;
+  });
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center px-6 overflow-hidden pt-20 pb-16">
+    <section className="relative w-full min-h-screen flex items-center justify-center px-6 overflow-hidden pt-10 pb-16">
       
       {/* Soft Burgundy & Wine Ambient Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[#6B2D34]/25 rounded-full blur-[170px] pointer-events-none"></div>
@@ -69,27 +82,30 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: Centered Elastic Lanyard & ID Card Component */}
-        <div className="flex justify-center items-center relative min-h-[560px]">
+        {/* Right Column: Properly Positioned & Free-Roaming Lanyard Component */}
+        <div className="flex justify-center items-center relative min-h-[480px]">
 
-          {/* Centered Anchor Container */}
-          <div className="relative flex flex-col items-center justify-center">
+          {/* Higher Anchor Container to keep initial position neat and centered */}
+          <div className="relative flex flex-col items-center -top-12">
             
-            {/* LANYARD STRING: Attached from the true center top anchor */}
+            {/* ELASTIC LANYARD STRING: Follows card rotation and length */}
             <motion.div 
-              style={{ height: stringHeight }}
-              className="absolute -top-[140px] w-4 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none origin-top"
+              style={{ 
+                height: stringLength,
+                rotate: stringAngle,
+                transformOrigin: "top center"
+              }}
+              className="absolute top-0 w-4 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none"
             />
 
-            {/* DRAGGABLE CARD ASSEMBLY */}
+            {/* DRAGGABLE CARD ASSEMBLY (Free 360-degree movement, snaps back to center) */}
             <motion.div
-              style={{ y }}
-              drag="y"
-              dragConstraints={{ top: 0, bottom: 220 }}
+              style={{ x, y }}
+              drag
+              dragConstraints={{ left: -140, right: 140, top: -80, bottom: 200 }}
               dragElastic={0.35}
-              dragTransition={{ bounceStiffness: 400, bounceDamping: 15 }}
               whileTap={{ cursor: "grabbing" }}
-              className="relative cursor-grab z-30 flex flex-col items-center"
+              className="relative cursor-grab z-30 flex flex-col items-center mt-[140px]"
             >
               {/* Metal connector clip */}
               <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-lg border border-neutral-300 flex items-center justify-center z-40 -mb-1 relative">
@@ -123,7 +139,7 @@ export default function SustainableEnergySection() {
                   <p className="text-xs font-semibold text-[#a24853]">
                     Delegate & Tech Innovator
                   </p>
-                  <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Pull down & watch it stretch! ✨</p>
+                  <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Drag anywhere & watch it stretch! ✨</p>
                 </div>
 
               </div>
