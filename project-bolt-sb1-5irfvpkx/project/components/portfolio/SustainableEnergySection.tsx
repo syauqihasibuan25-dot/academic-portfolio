@@ -8,12 +8,11 @@ export default function SustainableEnergySection() {
   const titleText = "Chasing a Sustainable Energy Future";
   const words = titleText.split(" ");
 
-  // Motion values to track dragging across X and Y axes
-  const x = useMotionValue(0);
+  // Motion value for vertical dragging
   const y = useMotionValue(0);
   
-  // Stretch the lanyard string vertically using scaleY based on downward drag
-  const stringScaleY = useTransform(y, [0, 250], [1, 2.5]);
+  // Stretch the lanyard string height dynamically as it's pulled down
+  const stringHeight = useTransform(y, [0, 200], [140, 340]);
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center px-6 overflow-hidden pt-20 pb-16">
@@ -70,62 +69,67 @@ export default function SustainableEnergySection() {
           </div>
         </div>
 
-        {/* Right Column: Elastic Lanyard & ID Card Component */}
-        <div className="flex justify-center items-center relative min-h-[520px]">
+        {/* Right Column: Centered Elastic Lanyard & ID Card Component */}
+        <div className="flex justify-center items-center relative min-h-[560px]">
 
-          <motion.div
-            style={{ x, y }}
-            drag
-            dragConstraints={{ left: -120, right: 120, top: -100, bottom: 220 }}
-            dragElastic={0.4}
-            dragTransition={{ bounceStiffness: 300, bounceDamping: 12 }}
-            whileTap={{ cursor: "grabbing" }}
-            className="relative cursor-grab z-30 flex flex-col items-center"
-          >
+          {/* Centered Anchor Container */}
+          <div className="relative flex flex-col items-center justify-center">
             
-            {/* ELASTIC LANYARD STRING: Stretches dynamically downwards from the anchor point */}
+            {/* LANYARD STRING: Attached from the true center top anchor */}
             <motion.div 
-              style={{ scaleY: stringScaleY }}
-              className="absolute -top-[160px] w-4 h-40 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none origin-top"
+              style={{ height: stringHeight }}
+              className="absolute -top-[140px] w-4 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none origin-top"
             />
 
-            {/* Metal connector clip */}
-            <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-lg border border-neutral-300 flex items-center justify-center z-40 -mb-1 relative">
-              <div className="w-4 h-1.5 bg-black rounded-full"></div>
-            </div>
-
-            {/* Burgundy Leather-Look ID Card */}
-            <div className="w-72 bg-gradient-to-b from-[#120406] via-[#21080b] to-[#120406] border-2 border-[#803941] rounded-3xl p-5 shadow-[0_0_50px_rgba(107,45,52,0.4)] backdrop-blur-2xl relative z-30">
-              
-              {/* Card Header */}
-              <div className="flex justify-between items-center pb-3 border-b border-[#5A1A22] mb-4 text-xs tracking-widest text-neutral-300 font-mono">
-                <span className="text-[#a24853] font-bold tracking-wider">MSH-GLOBAL ID</span>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#5A1A22]/60 text-[#a24853] border border-[#803941] text-[10px] font-bold animate-pulse shadow-[0_0_10px_rgba(128,57,65,0.5)]">
-                  ACTIVE
-                </span>
+            {/* DRAGGABLE CARD ASSEMBLY */}
+            <motion.div
+              style={{ y }}
+              drag="y"
+              dragConstraints={{ top: 0, bottom: 220 }}
+              dragElastic={0.35}
+              dragTransition={{ bounceStiffness: 400, bounceDamping: 15 }}
+              whileTap={{ cursor: "grabbing" }}
+              className="relative cursor-grab z-30 flex flex-col items-center"
+            >
+              {/* Metal connector clip */}
+              <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-lg border border-neutral-300 flex items-center justify-center z-40 -mb-1 relative">
+                <div className="w-4 h-1.5 bg-black rounded-full"></div>
               </div>
 
-              {/* Photo Container */}
-              <div className="relative w-full h-80 rounded-2xl overflow-hidden bg-neutral-900 border border-[#803941]/50 shadow-inner">
-                <Image 
-                  src="/syauqihasibuan.jpeg" 
-                  alt="Syauqi Hasibuan"
-                  fill
-                  className="object-cover object-top pointer-events-none"
-                />
-              </div>
+              {/* Burgundy Leather-Look ID Card */}
+              <div className="w-72 bg-gradient-to-b from-[#120406] via-[#21080b] to-[#120406] border-2 border-[#803941] rounded-3xl p-5 shadow-[0_0_50px_rgba(107,45,52,0.4)] backdrop-blur-2xl relative z-30">
+                
+                {/* Card Header */}
+                <div className="flex justify-between items-center pb-3 border-b border-[#5A1A22] mb-4 text-xs tracking-widest text-neutral-300 font-mono">
+                  <span className="text-[#a24853] font-bold tracking-wider">MSH-GLOBAL ID</span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#5A1A22]/60 text-[#a24853] border border-[#803941] text-[10px] font-bold animate-pulse shadow-[0_0_10px_rgba(128,57,65,0.5)]">
+                    ACTIVE
+                  </span>
+                </div>
 
-              {/* Card Footer Details */}
-              <div className="mt-4 text-center space-y-1">
-                <h3 className="font-bold text-base text-white tracking-wide">Syauqi Hasibuan</h3>
-                <p className="text-xs font-semibold text-[#a24853]">
-                  Delegate & Tech Innovator
-                </p>
-                <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Pull & watch it stretch like rubber! ✨</p>
-              </div>
+                {/* Photo Container */}
+                <div className="relative w-full h-80 rounded-2xl overflow-hidden bg-neutral-900 border border-[#803941]/50 shadow-inner">
+                  <Image 
+                    src="/syauqihasibuan.jpeg" 
+                    alt="Syauqi Hasibuan"
+                    fill
+                    className="object-cover object-top pointer-events-none"
+                  />
+                </div>
 
-            </div>
-          </motion.div>
+                {/* Card Footer Details */}
+                <div className="mt-4 text-center space-y-1">
+                  <h3 className="font-bold text-base text-white tracking-wide">Syauqi Hasibuan</h3>
+                  <p className="text-xs font-semibold text-[#a24853]">
+                    Delegate & Tech Innovator
+                  </p>
+                  <p className="text-[10px] text-[#803941] pt-1 font-mono tracking-tight animate-bounce">✨ Pull down & watch it stretch! ✨</p>
+                </div>
+
+              </div>
+            </motion.div>
+
+          </div>
 
         </div>
 
