@@ -15,7 +15,7 @@ export default function SustainableEnergySection() {
   // Dynamically stretch string length based on distance pulled from center
   const stringLength = useTransform([x, y], ([latestX, latestY]: number[]) => {
     const distance = Math.sqrt(latestX * latestX + latestY * latestY);
-    return Math.max(120, 140 + distance * 0.5);
+    return Math.max(80, 100 + distance * 0.4);
   });
 
   // Dynamically tilt string angle when pulled sideways
@@ -81,29 +81,29 @@ export default function SustainableEnergySection() {
         {/* Right Column: Unified Lanyard & Card Container */}
         <div className="flex justify-center items-center relative min-h-[500px]">
 
-          {/* Master wrapper acting as the exact single position anchor */}
-          <div className="relative flex flex-col items-center justify-center">
-
-            {/* STRETCHING STRING: Renders dynamically right above the card */}
+          {/* Master draggable wrapper containing both the string and the card together */}
+          <motion.div
+            style={{ x, y }}
+            drag
+            dragConstraints={{ left: -130, right: 130, top: -70, bottom: 180 }}
+            dragElastic={0.3}
+            dragTransition={{ bounceStiffness: 400, bounceDamping: 15 }}
+            whileTap={{ cursor: "grabbing" }}
+            className="relative cursor-grab z-30 flex flex-col items-center pt-20"
+          >
+            {/* STRETCHING STRING: Directly attached to the top of the drag group */}
             <motion.div 
               style={{ 
                 height: stringLength,
                 rotate: stringAngle,
                 transformOrigin: "top center"
               }}
-              className="absolute -top-[140px] w-4 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none"
+              className="absolute top-0 w-4 bg-gradient-to-b from-[#5A1A22] via-[#6B2D34] to-[#803941] shadow-[0_0_25px_rgba(107,45,52,0.8)] border-x border-[#803941]/60 z-10 pointer-events-none"
             />
 
-            {/* DRAGGABLE CARD: Moves freely in all directions, snaps back to center */}
-            <motion.div
-              style={{ x, y }}
-              drag
-              dragConstraints={{ left: -130, right: 130, top: -70, bottom: 180 }}
-              dragElastic={0.3}
-              dragTransition={{ bounceStiffness: 400, bounceDamping: 15 }}
-              whileTap={{ cursor: "grabbing" }}
-              className="relative cursor-grab z-30 flex flex-col items-center"
-            >
+            {/* Container for card and clip positioned below the string */}
+            <div className="relative flex flex-col items-center mt-[100px] z-30">
+              
               {/* Metal connector clip */}
               <div className="w-12 h-6 bg-gradient-to-b from-neutral-200 via-neutral-400 to-neutral-700 rounded-t-md shadow-lg border border-neutral-300 flex items-center justify-center z-40 -mb-1 relative">
                 <div className="w-4 h-1.5 bg-black rounded-full"></div>
@@ -140,9 +140,9 @@ export default function SustainableEnergySection() {
                 </div>
 
               </div>
-            </motion.div>
+            </div>
 
-          </div>
+          </motion.div>
 
         </div>
 
