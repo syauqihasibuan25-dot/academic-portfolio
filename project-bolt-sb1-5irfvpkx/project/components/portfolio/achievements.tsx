@@ -28,7 +28,6 @@ const tierStyles: Record<AwardTier, string> = {
 
 const noAwardSuffix: AwardTier[] = ['Participant', 'Honorable Mention', 'Recognition']
 
-// Alternate slide direction by 1-based position: odd -> left-to-right, even -> right-to-left
 function alternateDirection(index: number): 'left' | 'right' {
   return index % 2 === 0 ? 'left' : 'right'
 }
@@ -53,6 +52,7 @@ const baliHighlights: AwardItem[] = [
     description: 'Represented Malaysia in the Asian Science and Mathematics Olympiad final round.',
   },
 ]
+
 const international: AwardItem[] = [
    {
     title: 'PIMSO Final Round',
@@ -67,7 +67,7 @@ const international: AwardItem[] = [
     tier: 'Bronze',
     year: '2024',
     description: 'Earned a podium Bronze Individual Award at the Asian Science and Mathematics Olympiad finals.',
-    image: '/asmo-bangkok-2024.jpg',
+    image: '/syauqihasibuanbankokjpeg.jpeg',
     imageAlt: 'Bronze Individual Award for Muhammad Syauqi Hasibuan at ASMO International Competition 2024',
   },
 ]
