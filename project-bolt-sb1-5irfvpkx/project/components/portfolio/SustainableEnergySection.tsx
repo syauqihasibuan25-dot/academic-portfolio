@@ -13,7 +13,7 @@ export default function SustainableEnergySection() {
         {/* Left Column: Content */}
         <div className="space-y-6">
           <div className="inline-block px-4 py-1.5 rounded-full bg-[#5A1A22]/50 text-[#803941] text-xs font-bold tracking-widest uppercase border border-[#803941]/50">
-            Global Vision • Carbon Reduction
+            Global Vision • Sustainability
           </div>
           
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-white">
