@@ -196,7 +196,7 @@ function BaliShowcase() {
       <article className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur lg:grid-cols-2">
         <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-slate-100 lg:aspect-auto">
           <motion.img
-            src="/asmo-bali-2025.jpg"
+            src="/syauqiasmobali.jpeg"
             alt="Syauqi receiving his Merit certificate on the ASMO 2025 International Round stage in Bali"
             className="h-full w-full object-contain"
             whileHover={{ scale: 1.08 }}
