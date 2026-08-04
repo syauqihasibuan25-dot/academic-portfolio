@@ -13,7 +13,7 @@ export default function SustainableEnergySection() {
         {/* Left Column: Content */}
         <div className="space-y-6">
           <div className="inline-block px-4 py-1.5 rounded-full bg-[#5A1A22]/50 text-[#803941] text-xs font-bold tracking-widest uppercase border border-[#803941]/50">
-            Global Vision • Sustainability
+            Global Vision • Carbon Reduction
           </div>
           
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-white">
@@ -21,12 +21,12 @@ export default function SustainableEnergySection() {
           </h2>
           
           <p className="text-neutral-300 leading-relaxed text-base font-light">
-            Passionate about global sustainability, renewable energy solutions, and climate action. Preparing for platforms like Model United Nations (MUN) to advocate for green policies, while exploring technology and science to help build a cleaner, energy-secure tomorrow.
+            Passionate about global sustainability, cutting carbon emissions, and advancing renewable energy solutions. Preparing for platforms like Model United Nations (MUN) to advocate for aggressive green policies, while exploring chemical engineering science to minimize environmental impact and build an energy-secure tomorrow.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
             <span className="px-4 py-2 rounded-xl bg-[#120406] border border-[#803941]/40 text-xs text-[#a24853] font-semibold">
-              Sustainable Energy
+              Carbon Emissions Reduction
             </span>
             <span className="px-4 py-2 rounded-xl bg-[#120406] border border-[#803941]/40 text-xs text-[#a24853] font-semibold">
               Model United Nations (MUN)
