@@ -59,7 +59,7 @@ const international: AwardItem[] = [
     tier: 'Bronze',
     year: '2025-2026',
     description: 'Podium Bronze finish at the Philippine International Math and Science Olympics (PIMSO) Science Final Round.',
-    image: '/pimso-philiphines-2025.jjpg',
+    image: '/pimsofinal.jpeg',
     imageAlt: 'Bronze Individual Award for Muhammad Syauqi Hasibuan at PIMSO',
   },
   {
@@ -121,7 +121,7 @@ const leadership: AwardItem[] = [
     year: '2024',
     description:
       'Recognized as the top student for overall conduct, academic excellence, and positive school community involvement.',
-    image: '/merit-champion.jpg',
+    image: '/meritpoint.jpeg',
     imageAlt: 'Syauqi holding the 1st Place Merit Champion trophy and certificate at IISM',
   },
 ]
