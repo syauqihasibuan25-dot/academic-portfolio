@@ -109,6 +109,13 @@ const national: AwardItem[] = [
 
 const leadership: AwardItem[] = [
   {
+    title: 'Vice President & Head of Fundraising — Earth Science Club',
+    tier: 'Recognition',
+    year: '2025-2026',
+    description:
+      'Directing club initiatives, environmental campaigns, and spearheading strategic fundraising programs to support educational activities and club operations.',
+  },
+  {
     title: 'Prefect of the Month — IISMS',
     tier: 'Recognition',
     year: '',
