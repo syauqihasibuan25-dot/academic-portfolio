@@ -113,7 +113,7 @@ const leadership: AwardItem[] = [
     tier: 'Recognition',
     year: '2025-2026',
     description:
-      'Spearheaded dedicated fundraising programs and outreach initiatives to support the Orang Asli community at the National Elephant Conservation Centre, Lanchang.',
+      'Spearheaded successful fundraising initiatives, raising RM1,200 in just two days to support the local Orang Asli community at the National Elephant Conservation Centre, Lanchang.',
   },
   {
     title: 'Prefect of the Month — IISMS',
