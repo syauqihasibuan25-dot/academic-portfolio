@@ -109,11 +109,11 @@ const national: AwardItem[] = [
 
 const leadership: AwardItem[] = [
   {
-    title: 'Head of Fundraising — Earth Science Club',
+    title: 'Head of Fundraising for Orang Asli Community — Earth Science Club',
     tier: 'Recognition',
     year: '2025-2026',
     description:
-      'Spearheaded strategic fundraising programs dedicated to supporting the local Orang Asli community located at the elephant sanctuary.',
+      'Spearheaded dedicated fundraising programs and outreach initiatives to support the Orang Asli community at the National Elephant Conservation Centre, Lanchang.',
   },
   {
     title: 'Prefect of the Month — IISMS',
