@@ -1,4 +1,4 @@
-import { ArrowDown, Globe2, GraduationCap, Fuel, BookOpen, HeartHandshake } from 'lucide-react';
+import { ArrowDown, Globe2, GraduationCap, Fuel, BookOpen, HeartHandshake, Star } from 'lucide-react';
 import { Reveal } from '@/components/portfolio/reveal';
 
 export function Hero() {
@@ -48,14 +48,15 @@ export function Hero() {
             </div>
           </Reveal>
 
-          <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: Globe2, label: 'International stages', value: 'Representing Indonesia', tint: 'text-amber-600' },
               { icon: GraduationCap, label: 'Academic olympiads', value: 'National medalist', tint: 'text-emerald-600' },
               { icon: Fuel, label: 'Energy focus', value: 'Petroleum & chemical', tint: 'text-indigo-600' },
+              { icon: Star, label: 'Earth Science Club', value: 'Vice President', tint: 'text-violet-600' },
             ].map(({ icon: Icon, label, value, tint }, i) => (
               <Reveal key={label} direction="fade-scale" delay={0.4 + i * 0.1}>
-                <div className="group rounded-xl border border-slate-200/70 bg-white/60 p-5 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white/80">
+                <div className="group h-full rounded-xl border border-slate-200/70 bg-white/60 p-5 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white/80">
                   <Icon className={`h-6 w-6 ${tint}`} />
                   <p className="mt-3 text-sm font-semibold text-slate-900">{value}</p>
                   <p className="text-xs text-slate-500">{label}</p>
