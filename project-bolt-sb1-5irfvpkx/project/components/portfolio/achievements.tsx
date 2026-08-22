@@ -114,6 +114,8 @@ const leadership: AwardItem[] = [
     year: '2025-2026',
     description:
       'Spearheaded successful fundraising initiatives, raising RM1,200 in just two days to support the local Orang Asli community at the National Elephant Conservation Centre, Lanchang.',
+    image: '/orangasli.jpeg',
+    imageAlt: 'Muhammad Syauqi Hasibuan and team holding raised funds for the Orang Asli community',
   },
   {
     title: 'Prefect of the Month — IISMS',
