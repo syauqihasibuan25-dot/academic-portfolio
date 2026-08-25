@@ -134,6 +134,8 @@ const leadership: AwardItem[] = [
     year: '',
     description:
       'Awarded for outstanding leadership and steadfast dedication in maintaining campus discipline, order, and student engagement at International Islamic School Malaysia Secondary.',
+    image: '/prefect.jpeg',
+    imageAlt: 'Muhammad Syauqi Hasibuan receiving Prefect of the Month recognition',
   },
   {
     title: 'Merit Champion — IISMS',
@@ -378,3 +380,4 @@ export function Achievements() {
     </section>
   )
 }
+
