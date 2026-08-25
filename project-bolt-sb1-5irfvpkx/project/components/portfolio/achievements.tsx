@@ -115,7 +115,7 @@ const leadership: AwardItem[] = [
     year: '2025-2026',
     description:
       'Collaborated with the club president to spearhead a major fundraising initiative, successfully raising RM6,600 to install a new water dispenser at the school for enhanced accessibility for students and teachers.',
-    image: '/waterdispenser.jpeg',
+    image: '/waterdispenser1.jpeg',
     imageAlt: 'School video feature showcasing the new water dispenser installation initiative',
     link: 'https://www.instagram.com/reel/DaRrUJNybaX/?igsi=d3licmkwYm00NGY0',
   },
