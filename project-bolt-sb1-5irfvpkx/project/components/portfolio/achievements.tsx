@@ -270,3 +270,113 @@ function BaliShowcase() {
     </TiltCard>
   )
 }
+
+function CategoryHeader({
+  icon,
+  title,
+  subtitle,
+  accentText,
+  line,
+}: {
+  icon: React.ReactNode
+  title: string
+  subtitle: string
+  accentText: string
+  line: string
+}) {
+  return (
+    <Reveal direction="fade-scale" className="mb-8">
+      <div className="flex items-center gap-3">
+        <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${accentText}`}>{icon}</span>
+        <div>
+          <h3 className="font-display text-2xl font-bold text-slate-900 sm:text-3xl">{title}</h3>
+          <p className="text-sm font-medium text-slate-500">{subtitle}</p>
+        </div>
+      </div>
+      <div className={`mt-4 h-1 w-24 rounded-full ${line}`} />
+    </Reveal>
+  )
+}
+
+export function Achievements() {
+  return (
+    <section id="achievements" className="relative mx-auto max-w-6xl px-6 py-16">
+      <Reveal direction="fade-scale" className="mb-14 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-4 py-1.5 text-sm font-semibold text-slate-600 backdrop-blur">
+          <Trophy className="h-4 w-4 text-amber-500" />
+          Achievements &amp; Awards
+        </span>
+        <h2 className="font-display mt-4 text-balance text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          A Record of Excellence Across Every Arena
+        </h2>
+      </Reveal>
+
+      {/* International */}
+      <div id="international" className="scroll-mt-20">
+        <CategoryHeader
+          icon={<Globe className="h-6 w-6 text-white" />}
+          title="International Competitions"
+          subtitle="Global olympiads & podium finishes"
+          accentText="bg-amber-500 text-white"
+          line="bg-amber-400"
+        />
+        <div className="flex flex-col gap-5">
+          <Reveal direction={alternateDirection(1)}>
+            <BaliShowcase />
+          </Reveal>
+          <div className="grid gap-5 lg:grid-cols-2">
+            {international.map((item, i) => (
+              <Reveal key={item.title + i} direction={alternateDirection(i + 2)} delay={i * 0.06}>
+                <AwardCard item={item} glow="rgba(245,158,11,0.35)" accent="border-amber-200 bg-amber-50 text-amber-600" />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* National */}
+      <div id="national" className="mt-16 scroll-mt-20">
+        <CategoryHeader
+          icon={<Award className="h-6 w-6 text-white" />}
+          title="National & Regional STEM Competitions"
+          subtitle="Top-tier national rankings"
+          accentText="bg-emerald-500 text-white"
+          line="bg-emerald-400"
+        />
+        <div className="grid gap-5 lg:grid-cols-2">
+          {national.map((item, i) => (
+            <Reveal key={item.title + i} direction={alternateDirection(i + 1)} delay={i * 0.06}>
+              <AwardCard
+                item={item}
+                glow="rgba(16,185,129,0.35)"
+                accent="border-emerald-200 bg-emerald-50 text-emerald-600"
+              />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+
+      {/* Leadership */}
+      <div id="leadership" className="mt-16 scroll-mt-20">
+        <CategoryHeader
+          icon={<Star className="h-6 w-6 text-white" />}
+          title="Leadership & Institutional Recognition"
+          subtitle="Character, conduct & community"
+          accentText="bg-indigo-500 text-white"
+          line="bg-indigo-400"
+        />
+        <div className="grid gap-5 lg:grid-cols-2">
+          {leadership.map((item, i) => (
+            <Reveal key={item.title + i} direction={alternateDirection(i + 1)} delay={i * 0.06}>
+              <AwardCard
+                item={item}
+                glow="rgba(99,102,241,0.35)"
+                accent="border-indigo-200 bg-indigo-50 text-indigo-600"
+              />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
