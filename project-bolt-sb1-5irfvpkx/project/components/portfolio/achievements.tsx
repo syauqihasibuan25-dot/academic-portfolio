@@ -15,6 +15,7 @@ type AwardItem = {
   image?: string
   imageAlt?: string
   link?: string
+  imageClassName?: string
 }
 
 const tierStyles: Record<AwardTier, string> = {
@@ -62,6 +63,7 @@ const international: AwardItem[] = [
     description: 'Podium Bronze finish at the Philippine International Math and Science Olympics (PIMSO) Science Final Round.',
     image: '/pimsofinal.jpeg',
     imageAlt: 'Bronze Individual Award for Muhammad Syauqi Hasibuan at PIMSO',
+    imageClassName: 'object-contain',
   },
   {
     title: 'ASMO International Round — Bangkok, Thailand',
@@ -145,6 +147,7 @@ const leadership: AwardItem[] = [
       'Recognized as the top student for overall conduct, academic excellence, and positive school community involvement.',
     image: '/meritpoint.jpeg',
     imageAlt: 'Syauqi holding the 1st Place Merit Champion trophy and certificate at IISM',
+    imageClassName: 'object-contain',
   },
 ]
 
@@ -166,7 +169,7 @@ function ImageAwardCard({ item, glow }: { item: AwardItem; glow: string }) {
           <motion.img
             src={item.image || '/placeholder.svg'}
             alt={item.imageAlt || item.title}
-            className="h-full w-full object-cover"
+            className={`h-full w-full ${item.imageClassName || 'object-cover'}`}
             whileHover={{ scale: 1.08 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           />
