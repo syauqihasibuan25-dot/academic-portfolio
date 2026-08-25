@@ -14,6 +14,7 @@ type AwardItem = {
   description: string
   image?: string
   imageAlt?: string
+  link?: string
 }
 
 const tierStyles: Record<AwardTier, string> = {
@@ -109,6 +110,16 @@ const national: AwardItem[] = [
 
 const leadership: AwardItem[] = [
   {
+    title: 'School Water Dispenser Project Initiative — Student Leadership',
+    tier: 'Recognition',
+    year: '2025-2026',
+    description:
+      'Collaborated with the club president to spearhead a major fundraising initiative, successfully raising RM6,600 to install a new water dispenser at the school for enhanced accessibility for students and teachers.',
+    image: '/waterdispenser.jpeg',
+    imageAlt: 'School video feature showcasing the new water dispenser installation initiative',
+    link: 'https://www.instagram.com/reel/DaRrUJNybaX/?igsi=d3licmkwYm00NGY0',
+  },
+  {
     title: 'Head of Fundraising for Orang Asli Community — Earth Science Club',
     tier: 'Recognition',
     year: '2025-2026',
@@ -158,13 +169,28 @@ function ImageAwardCard({ item, glow }: { item: AwardItem; glow: string }) {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           />
         </div>
-        <div className="min-w-0 flex-1 p-5">
-          <div className="flex flex-wrap items-center gap-2">
-            <TierBadge tier={item.tier} />
-            {item.year ? <span className="text-xs font-semibold text-slate-400">{item.year}</span> : null}
+        <div className="min-w-0 flex-1 p-5 flex flex-col justify-between">
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <TierBadge tier={item.tier} />
+              {item.year ? <span className="text-xs font-semibold text-slate-400">{item.year}</span> : null}
+            </div>
+            <h4 className="font-display mt-2 text-pretty text-lg font-bold text-slate-900">{item.title}</h4>
+            <p className="mt-1.5 text-pretty text-sm leading-relaxed text-slate-600">{item.description}</p>
           </div>
-          <h4 className="font-display mt-2 text-pretty text-lg font-bold text-slate-900">{item.title}</h4>
-          <p className="mt-1.5 text-pretty text-sm leading-relaxed text-slate-600">{item.description}</p>
+          
+          {item.link && (
+            <div className="mt-4">
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-pink-50 px-4 py-2 text-xs font-semibold text-pink-600 border border-pink-200 transition-colors hover:bg-pink-100"
+              >
+                <span>Watch Video on Instagram</span>
+              </a>
+            </div>
+          )}
         </div>
       </article>
     </TiltCard>
