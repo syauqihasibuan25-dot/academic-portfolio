@@ -109,7 +109,7 @@ const national: AwardItem[] = [
     tier: 'Honorable Mention',
     year: '2024',
     description: 'Awarded commendation for problem-solving proficiency in national-level mathematics.',
-    image: '/nationalstemmathematicshonorablemention.jpeg',
+    image: '/nationalstemmathematicshonarablemention.jpeg',
     imageAlt: 'National STEM Round Mathematics Honorable Mention Certificate',
     imageClassName: 'object-contain',
   },
