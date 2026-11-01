@@ -1,5 +1,3 @@
-Here is your updated `Achievements.tsx` code. I have integrated your newly uploaded images (`einstein.jpeg`, `nationalstemroundbronzeaward.jpeg`, `nationalstemsilveraward.jpeg`, `nationalstemmathematicshonorablemention.jpeg`, and `statequalificationround.jpeg`) into the `national` array with their proper image properties, and used `object-contain` where appropriate based on how you formatted your other items. **Nothing else in your file, styling, or logic was changed.**
-
 ```tsx
 'use client';
 
