@@ -83,7 +83,7 @@ const national: AwardItem[] = [
     description:
       'Demonstrated advanced problem-solving proficiency in the National Round of the Einstein Olympiad (Science).',
     image: '/einstein.jpeg',
-    imageAlt: 'International Einstein Olympiad National Round Certificate for Muhammad Syauqi Hasibuan',
+    imageAlt: 'International Einstein Olympiad National Round Certificate',
     imageClassName: 'object-contain',
   },
   {
@@ -134,7 +134,7 @@ const leadership: AwardItem[] = [
       'Collaborated with the club president to spearhead a major fundraising initiative, successfully raising RM6,600 to install a new water dispenser at the school for enhanced accessibility for students and teachers.',
     image: '/waterdispenser1.jpeg',
     imageAlt: 'School video feature showcasing the new water dispenser installation initiative',
-    link: '[https://www.instagram.com/reel/DaRrUJNybaX/?igsi=d3licmkwYm00NGY0](https://www.instagram.com/reel/DaRrUJNybaX/?igsi=d3licmkwYm00NGY0)',
+    link: 'https://www.instagram.com/reel/DaRrUJNybaX/?igsi=d3licmkwYm00NGY0',
   },
   {
     title: 'Head of Fundraising for Orang Asli Community — Earth Science Club',
@@ -178,7 +178,7 @@ function TierBadge({ tier }: { tier: AwardTier }) {
 
 function ImageAwardCard({ item, glow }: { item: AwardItem; glow: string }) {
   return (
-    <TiltCard className="h-full" glow="{glow}">
+    <TiltCard glow={glow} className="h-full">
       <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur">
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900 flex items-center justify-center">
           <motion.img
@@ -192,7 +192,7 @@ function ImageAwardCard({ item, glow }: { item: AwardItem; glow: string }) {
         <div className="min-w-0 flex-1 p-5 flex flex-col justify-between">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <TierBadge tier="{item.tier}"/>
+              <TierBadge tier={item.tier} />
               {item.year ? <span className="text-xs font-semibold text-slate-400">{item.year}</span> : null}
             </div>
             <h4 className="font-display mt-2 text-pretty text-lg font-bold text-slate-900">{item.title}</h4>
@@ -219,14 +219,14 @@ function ImageAwardCard({ item, glow }: { item: AwardItem; glow: string }) {
 
 function TextAwardCard({ item, glow, accent }: { item: AwardItem; glow: string; accent: string }) {
   return (
-    <TiltCard className="h-full" glow="{glow}">
+    <TiltCard glow={glow} className="h-full">
       <article className="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm backdrop-blur">
         <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border ${accent}`}>
-          <Medal className="h-5 w-5"/>
+          <Medal className="h-5 w-5" />
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <TierBadge tier="{item.tier}"/>
+            <TierBadge tier={item.tier} />
             {item.year ? <span className="text-xs font-semibold text-slate-400">{item.year}</span> : null}
           </div>
           <h4 className="font-display mt-2 text-pretty text-lg font-bold text-slate-900">{item.title}</h4>
@@ -239,15 +239,15 @@ function TextAwardCard({ item, glow, accent }: { item: AwardItem; glow: string; 
 
 function AwardCard({ item, glow, accent }: { item: AwardItem; glow: string; accent: string }) {
   return item.image ? (
-    <ImageAwardCard glow="{glow}" item="{item}"/>
+    <ImageAwardCard item={item} glow={glow} />
   ) : (
-    <TextAwardCard accent="{accent}" glow="{glow}" item="{item}"/>
+    <TextAwardCard item={item} glow={glow} accent={accent} />
   )
 }
 
 function BaliShowcase() {
   return (
-    <TiltCard className="h-full" glow="rgba(245,158,11,0.35)">
+    <TiltCard glow="rgba(245,158,11,0.35)" className="h-full">
       <article className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur lg:grid-cols-2">
         <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-slate-100 lg:aspect-auto">
           <motion.img
@@ -258,7 +258,7 @@ function BaliShowcase() {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           />
           <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-amber-500 px-3 py-1 text-xs font-semibold text-white shadow">
-            <Globe className="h-3.5 w-3.5"/>
+            <Globe className="h-3.5 w-3.5" />
             Bali, Indonesia · Dec 2025
           </span>
         </div>
@@ -274,7 +274,7 @@ function BaliShowcase() {
                 className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50/60 p-3 transition-colors hover:border-amber-200 hover:bg-amber-50/60"
               >
                 <div className="mt-0.5 shrink-0">
-                  <TierBadge tier="{item.tier}"/>
+                  <TierBadge tier={item.tier} />
                 </div>
                 <div className="min-w-0">
                   <p className="text-pretty text-sm font-semibold text-slate-900">{item.title}</p>
@@ -303,7 +303,7 @@ function CategoryHeader({
   line: string
 }) {
   return (
-    <Reveal className="mb-8" direction="fade-scale">
+    <Reveal direction="fade-scale" className="mb-8">
       <div className="flex items-center gap-3">
         <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${accentText}`}>{icon}</span>
         <div>
@@ -319,9 +319,9 @@ function CategoryHeader({
 export function Achievements() {
   return (
     <section id="achievements" className="relative mx-auto max-w-6xl px-6 py-16">
-      <Reveal className="mb-14 text-center" direction="fade-scale">
+      <Reveal direction="fade-scale" className="mb-14 text-center">
         <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-4 py-1.5 text-sm font-semibold text-slate-600 backdrop-blur">
-          <Trophy className="h-4 w-4 text-amber-500"/>
+          <Trophy className="h-4 w-4 text-amber-500" />
           Achievements &amp; Awards
         </span>
         <h2 className="font-display mt-4 text-balance text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
@@ -331,20 +331,21 @@ export function Achievements() {
 
       {/* International */}
       <div id="international" className="scroll-mt-20">
-        <CategoryHeader className="h-6 w-6 text-white" icon="{<Globe"/>}
+        <CategoryHeader
+          icon={<Globe className="h-6 w-6 text-white" />}
           title="International Competitions"
           subtitle="Global olympiads & podium finishes"
           accentText="bg-amber-500 text-white"
           line="bg-amber-400"
         />
         <div className="flex flex-col gap-5">
-          <Reveal direction="{alternateDirection(1)}">
-            <BaliShowcase/>
+          <Reveal direction={alternateDirection(1)}>
+            <BaliShowcase />
           </Reveal>
           <div className="grid gap-5 lg:grid-cols-2">
             {international.map((item, i) => (
-              <Reveal * + 0.06} 2)} delay="{i" direction="{alternateDirection(i" i} key="{item.title">
-                <AwardCard accent="border-amber-200 bg-amber-50 text-amber-600" glow="rgba(245,158,11,0.35)" item="{item}"/>
+              <Reveal key={item.title + i} direction={alternateDirection(i + 2)} delay={i * 0.06}>
+                <AwardCard item={item} glow="rgba(245,158,11,0.35)" accent="border-amber-200 bg-amber-50 text-amber-600" />
               </Reveal>
             ))}
           </div>
@@ -353,7 +354,8 @@ export function Achievements() {
 
       {/* National */}
       <div id="national" className="mt-16 scroll-mt-20">
-        <CategoryHeader className="h-6 w-6 text-white" icon="{<Award"/>}
+        <CategoryHeader
+          icon={<Award className="h-6 w-6 text-white" />}
           title="National & Regional STEM Competitions"
           subtitle="Top-tier national rankings"
           accentText="bg-emerald-500 text-white"
@@ -361,8 +363,12 @@ export function Achievements() {
         />
         <div className="grid gap-5 lg:grid-cols-2">
           {national.map((item, i) => (
-            <Reveal * + 0.06} 1)} delay="{i" direction="{alternateDirection(i" i} key="{item.title">
-              <AwardCard accent="border-emerald-200 bg-emerald-50 text-emerald-600" glow="rgba(16,185,129,0.35)" item="{item}"/>
+            <Reveal key={item.title + i} direction={alternateDirection(i + 1)} delay={i * 0.06}>
+              <AwardCard
+                item={item}
+                glow="rgba(16,185,129,0.35)"
+                accent="border-emerald-200 bg-emerald-50 text-emerald-600"
+              />
             </Reveal>
           ))}
         </div>
@@ -370,7 +376,8 @@ export function Achievements() {
 
       {/* Leadership */}
       <div id="leadership" className="mt-16 scroll-mt-20">
-        <CategoryHeader className="h-6 w-6 text-white" icon="{<Star"/>}
+        <CategoryHeader
+          icon={<Star className="h-6 w-6 text-white" />}
           title="Leadership & Institutional Recognition"
           subtitle="Character, conduct & community"
           accentText="bg-indigo-500 text-white"
@@ -378,8 +385,12 @@ export function Achievements() {
         />
         <div className="grid gap-5 lg:grid-cols-2">
           {leadership.map((item, i) => (
-            <Reveal * + 0.06} 1)} delay="{i" direction="{alternateDirection(i" i} key="{item.title">
-              <AwardCard accent="border-indigo-200 bg-indigo-50 text-indigo-600" glow="rgba(99,102,241,0.35)" item="{item}"/>
+            <Reveal key={item.title + i} direction={alternateDirection(i + 1)} delay={i * 0.06}>
+              <AwardCard
+                item={item}
+                glow="rgba(99,102,241,0.35)"
+                accent="border-indigo-200 bg-indigo-50 text-indigo-600"
+              />
             </Reveal>
           ))}
         </div>
