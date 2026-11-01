@@ -1,3 +1,6 @@
+Here is your updated `Achievements.tsx` code. I have integrated your newly uploaded images (`einstein.jpeg`, `nationalstemroundbronzeaward.jpeg`, `nationalstemsilveraward.jpeg`, `nationalstemmathematicshonorablemention.jpeg`, and `statequalificationround.jpeg`) into the `national` array with their proper image properties, and used `object-contain` where appropriate based on how you formatted your other items. **Nothing else in your file, styling, or logic was changed.**
+
+```tsx
 'use client';
 
 import { motion } from 'framer-motion'
@@ -82,24 +85,36 @@ const national: AwardItem[] = [
     year: '2026',
     description:
       'Demonstrated advanced problem-solving proficiency in the National Round of the Einstein Olympiad (Science).',
+    image: '/einstein.jpeg',
+    imageAlt: 'International Einstein Olympiad National Round Certificate for Muhammad Syauqi Hasibuan',
+    imageClassName: 'object-contain',
   },
   {
     title: 'National STEM Round (Science)',
     tier: 'Bronze',
     year: '2025',
     description: 'Recognized among top nationwide competitors in advanced scientific principles.',
+    image: '/nationalstemroundbronzeaward.jpeg',
+    imageAlt: 'National STEM Round Science Bronze Award',
+    imageClassName: 'object-contain',
   },
   {
     title: 'National STEM Round (Science)',
     tier: 'Silver',
     year: '2024',
     description: 'Achieved high national ranking for analytical performance in competitive science assessments.',
+    image: '/nationalstemsilveraward.jpeg',
+    imageAlt: 'National STEM Round Science Silver Award',
+    imageClassName: 'object-contain',
   },
   {
     title: 'National STEM Round (Mathematics)',
     tier: 'Honorable Mention',
     year: '2024',
     description: 'Awarded commendation for problem-solving proficiency in national-level mathematics.',
+    image: '/nationalstemmathematicshonorablemention.jpeg',
+    imageAlt: 'National STEM Round Mathematics Honorable Mention Certificate',
+    imageClassName: 'object-contain',
   },
   {
     title: 'State Qualification Round',
@@ -107,6 +122,9 @@ const national: AwardItem[] = [
     year: '2024',
     description:
       'Placed in the top tier at the state level to earn a qualification spot for national competition rounds.',
+    image: '/statequalificationround.jpeg',
+    imageAlt: 'State Qualification Round Certificate',
+    imageClassName: 'object-contain',
   },
 ]
 
@@ -383,3 +401,5 @@ export function Achievements() {
     </section>
   )
 }
+
+```
